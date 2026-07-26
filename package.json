@@ -1,0 +1,21 @@
+{
+    "name": "ai.lookbe.omnivoicetts",
+    "version": "0.0.1",
+    "displayName": "OmniVoice TTS Unity",
+    "description": "OmniVoice TTS for Unity",
+    "unity": "2021.3",
+    "keywords": [
+        "tts",
+        "ai",
+        "omnivoice"
+    ],
+    "author": {
+        "name": "lookbe"
+    },
+	"samples": [
+    {
+	  "displayName": "Basic OmniVoice",
+	  "description": "Shows the basic OmniVoice TTS usage.",
+	  "path": "Samples~/BasicOmniVoice"
+    }]
+}

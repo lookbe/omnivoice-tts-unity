@@ -1,0 +1,32 @@
+# Unity standard ignores
+.utmp/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+*.log
+
+# Jetbrains Rider
+.idea/
+*.DotSettings.user
+
+# Visual Studio
+.vs/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pdb
+
+# Unity3D
+*.unitypackage
+sysinfo.txt
+mono_crash.*
+
+# Addressables
+/ServerData
+/[Aa]ssets/StreamingAssets/aa*
