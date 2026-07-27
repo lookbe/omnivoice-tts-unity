@@ -1,34 +1,27 @@
 # OmniVoice TTS Unity
 
-OmniVoice TTS for Unity.
+Simple OmniVoice TTS support for Unity.
 
-## Package Layout
+## Install
 
-- `Runtime/OmniVoiceTTS.cs` is the scene-facing component that owns playback.
-- `Runtime/OmniVoice/OmniVoiceTTSModel.cs` handles native initialization and synthesis.
-- `Runtime/Native/OmniVoiceNative.cs` contains the P/Invoke bindings.
-- `Runtime/Core/*` contains the shared background runner, status enum, and backend loader.
-- `Plugins/Windows/x86-64/` contains the native DLL payload used by the Unity package.
+1. Open Unity Package Manager.
+2. Click the `+` menu.
+3. Choose `Add package from git URL...`
+4. Paste the Git URL for this package.
 
-## Basic Usage
+## Sample
 
-1. Add the `OmniVoiceTTS` component to a GameObject with an `AudioSource`.
-2. Point `modelPath` at the OmniVoice GGUF model and `codecPath` at the codec GGUF.
-3. Fill in `instruct` with the desired voice design text.
-4. Call `InitModel()` and then `Synthesize(...)`.
+If you want a quick demo, import the sample
 
-## Model Download
+## Download GGUF
 
-Download GGUF model files from:
+Download the GGUF files from:
 
-- [https://huggingface.co/Serveurperso/OmniVoice-GGUF](https://huggingface.co/Serveurperso/OmniVoice-GGUF)
-
-## Installation
-
-Add this package to your Unity project via Package Manager.
+- https://huggingface.co/Serveurperso/OmniVoice-GGUF
 
 ## Credits
 
-This Unity plugin is built on top of the C++ inference engine from:
+Built on top of:
 
 - [ServeurpersoCom/omnivoice.cpp](https://github.com/ServeurpersoCom/omnivoice.cpp)
+- [k2-fsa/OmniVoice](https://github.com/k2-fsa/OmniVoice)
