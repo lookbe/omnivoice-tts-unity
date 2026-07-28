@@ -10,9 +10,18 @@ namespace OmniVoiceTTS
         public string modelPath = string.Empty;
         public string codecPath = string.Empty;
 
+        [Header("Voice Mode")]
+        public TtsGenerationMode voiceMode = TtsGenerationMode.Design;
+
         [Header("Voice Design")]
         [TextArea(3, 3)]
         public string instruct = string.Empty;
+
+        [Header("Voice Clone")]
+        public string cloneWavPath = string.Empty;
+        [TextArea(3, 3)]
+        [Tooltip("Enter transcript text directly, or provide a path to a .txt file.")]
+        public string cloneTranscript = string.Empty;
 
         [Header("Language")]
         public string lang = "auto";
@@ -94,6 +103,7 @@ namespace OmniVoiceTTS
 
             model.modelPath = modelPath;
             model.codecPath = codecPath;
+            model.ApplyVoiceSettings(voiceMode, instruct, cloneWavPath, cloneTranscript);
             model.InitModel();
 
             yield return new WaitWhile(() => model.status == ModelStatus.Loading);
@@ -123,7 +133,8 @@ namespace OmniVoiceTTS
             }
 
             status = ModelStatus.Generate;
-            model.Synthesize(text, language ?? lang, voiceInstruct ?? instruct);
+            model.ApplyVoiceSettings(voiceMode, voiceInstruct ?? instruct, cloneWavPath, cloneTranscript);
+            model.Synthesize(text, language ?? lang, voiceMode, voiceInstruct ?? instruct, cloneWavPath, cloneTranscript);
             StartCoroutine(WaitForGenerationAndPlaybackDone());
         }
 
