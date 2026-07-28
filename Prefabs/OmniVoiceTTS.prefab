@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9218646861573208235}
   - component: {fileID: 1147967160244016661}
   - component: {fileID: 6229101209710255753}
+  - component: {fileID: 7166684002516127174}
   m_Layer: 0
   m_Name: OmniVoiceTTS
   m_TagString: Untagged
@@ -145,8 +146,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelPath: D:/ai/gguf/tts/omnivoice-base-Q4_K_M.gguf
   codecPath: D:/ai/gguf/tts/omnivoice-tokenizer-Q4_K_M.gguf
+  voiceMode: 0
   instruct: female, low pitch, british accent
+  cloneWavPath: 
+  cloneTranscript: 
   lang: auto
+--- !u!114 &7166684002516127174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3844914217590818828}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9b26b3c68980340a6aac554c50175c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wavFileFolder: D:/ai/sample/
 --- !u!1 &8511389694172475196
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +210,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelPath: 
   codecPath: 
+  voiceMode: 0
+  instruct: 
+  cloneWavPath: 
+  cloneTranscript: 
   useFa: 1
   clampFp16: 0
   streamAudio: 1

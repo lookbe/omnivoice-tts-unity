@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,7 @@ namespace OmniVoiceTTS
 
         public delegate void StatusChangedDelegate(ModelStatus status);
         public event StatusChangedDelegate OnStatusChanged;
+        public event Action<float[]> OnAudioChunkGenerated;
 
         private ModelStatus _status = ModelStatus.Init;
         public ModelStatus status
@@ -67,7 +69,7 @@ namespace OmniVoiceTTS
             if (model != null)
             {
                 model.OnStatusChanged += OnModelStatusChanged;
-                model.OnAudioChunkGenerated += OnAudioChunkGenerated;
+                model.OnAudioChunkGenerated += OnModelAudioChunkGenerated;
             }
         }
 
@@ -76,7 +78,7 @@ namespace OmniVoiceTTS
             if (model != null)
             {
                 model.OnStatusChanged -= OnModelStatusChanged;
-                model.OnAudioChunkGenerated -= OnAudioChunkGenerated;
+                model.OnAudioChunkGenerated -= OnModelAudioChunkGenerated;
             }
         }
 
@@ -186,8 +188,10 @@ namespace OmniVoiceTTS
             this.status = status;
         }
 
-        private void OnAudioChunkGenerated(float[] audioChunk)
+        private void OnModelAudioChunkGenerated(float[] audioChunk)
         {
+            OnAudioChunkGenerated?.Invoke(audioChunk);
+
             lock (audioQueue)
             {
                 foreach (var s in audioChunk)
